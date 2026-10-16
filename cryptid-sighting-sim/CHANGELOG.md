@@ -13,3 +13,5 @@
 - `trap_demos.ipynb`: entry point reproducing the true fit and each wrong fit.
 - Notebook ships unexecuted (no kernel in the build sandbox); all cell code was
   run in-process and reproduces the numbers quoted in README.md and fits.txt.
+- Fix: README trap 2 quoted an exposure range of 1 to ~400 (the clip target in
+  the generating code). The realised column runs 4 to 211, median 28.

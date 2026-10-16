@@ -115,7 +115,8 @@ Null predictors print as highly significant. *Tell:* variance/mean = 52.
 **+0.357, p = 0.019** against a true **-0.295**, while vendor A goes to -0.041,
 p = 0.80 against a true +0.330. Both the sign and the significance of the
 "winning" predictor are manufactured by exposure confounding. Entering raw
-exposure linearly is equally wrong — the column spans 1 to ~400.
+exposure linearly is equally wrong — the realised column runs 4 to 211
+(median 28), a 53-fold spread.
 
 **3. `ranger_district` as a continuous number.** The true effects are
 non-monotonic, so a single slope averages them away: est -0.015, p = 0.58,
