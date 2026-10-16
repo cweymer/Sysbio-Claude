@@ -19,8 +19,8 @@ R-squared 0.908, against 0.085 for the additive model `y ~ x1 + x2 + x3 + x4`.
 | Collinearity | No | All VIFs 1.0; largest predictor-predictor correlation 0.059 |
 | Pure interaction `x1` x `x2` | Yes | Marginal r = 0.018 and 0.080; adds 0.318 to R-squared; t = 69 |
 | Symmetric nonlinearity in `x3` | Yes | Marginal r = -0.096; linear coefficient p = 0.29; quadratic t = 72 |
-| Heteroscedasticity in `x4` | Yes | Breusch-Pagan p = 3.9e-14; residual SD runs 0.6 to 2.6 across the `x4` range |
-| Non-normal errors | No | Raw residuals fail Shapiro-Wilk (p = 5.4e-7); standardised residuals pass (p = 0.95) |
+| Heteroscedasticity in `x4` | Yes | Breusch-Pagan p = 3.9e-14; binned residual SD 0.62 (lowest sixth of `x4`) to 2.65 (highest sixth); fitted SD 0.58 at `x4` = 0 rising to 3.48 at `x4` = 3 |
+| Non-normal errors | No | Unweighted residuals of the same mean model fail Shapiro-Wilk (p = 5.4e-7), and those of the additive model at p = 2.2e-16; standardised residuals pass (p = 0.95) |
 
 The last row is the point of the exercise: the heavy-tailed, skewed residuals of the naive fit
 are produced by the variance function, not by a non-normal error family, so the correct fix is

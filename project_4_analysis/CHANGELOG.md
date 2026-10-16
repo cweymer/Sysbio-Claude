@@ -25,3 +25,14 @@
   `I(x3 ** 2)` both work.
 - `residual_diagnostics` returns NaN for a predictor whose quadratic term is already in the
   model instead of fitting a rank-deficient augmentation.
+
+## 2026-10-16 - numeric corrections to the narrative
+
+- The heteroscedasticity claim now separates the binned empirical residual SD (0.62 to 2.65
+  across sixths of `x4`, which is what figure 5 shows) from the fitted variance function
+  (0.58 at `x4` = 0 rising to 3.48 at `x4` = 3). The earlier text quoted the binned range while
+  describing it as the model's range, and gave the information ratio as a sixteenth rather
+  than the 4.3-fold SD ratio's eighteenth.
+- Shapiro-Wilk figures corrected: the additive model's residuals give p = 2.2e-16 (skew 1.08,
+  excess kurtosis 4.46); the p = 5.4e-7 previously attributed to "raw residuals" is the
+  unweighted structured model's, now labelled as such.
