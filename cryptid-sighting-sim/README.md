@@ -37,6 +37,9 @@ denominator.
 | `simulate_cryptids.py` | generating code; `python simulate_cryptids.py` rewrites the CSV |
 | `cryptid_sightings.csv` | the dataset, 500 rows |
 | `trap_demos.ipynb` | entry point: fits the true model and each wrong model side by side |
+| `correct_analysis.ipynb` | the worked correct analysis, with figures |
+| `analysis_plots.py` | figure code (Okabe-Ito palette, Arial, SVG output) |
+| `figures/` | six figures, SVG and PNG |
 | `fits.txt` | saved output of the trap fits, for reference |
 | `CHANGELOG.md` | change log |
 
@@ -149,6 +152,35 @@ and district structure.
 **8. Scale.** Canopy slopes apply to (percent - 50)/10. In raw percentage units
 they are ~0.033 and ~-0.030, which is easy to dismiss as negligible next to
 beer's -0.28 when the units differ by a factor of ten.
+
+## The worked correct analysis
+
+`correct_analysis.ipynb` is the companion to the trap list: the analysis done properly,
+in the order the decisions actually arise, with figures in `figures/` (SVG for editing,
+PNG for slides). Plotting code is in `analysis_plots.py`.
+
+| step | decision | what the data say |
+|---|---|---|
+| 1 | rows are unequal-sized park-months, so estimate a *rate* | exposure 4 to 211, 53 fold spread |
+| 2 | choose the family from the mean-variance relationship | variance/mean 52; Poisson chi2/df 10.1; fitted size 1.82 |
+| 3 | rotate the collinear pair into average and disagreement | VIF 19.7 and 19.3 become 1.5 and 1.0 |
+| 4 | test functional form for beer sales | quadratic LR chi2 64.8 on 1 df, minimum at z = 0.60 |
+| 5 | test district as a 4-df block, never as a slope | LR chi2 122.5 (p = 1.5e-25) versus p = 0.91 as a slope |
+| 6 | report rate ratios, flag what is unidentified | canopy average 1.10 (1.01 to 1.20); disagreement 1.01 (0.98 to 1.04) |
+| 7 | check fit with randomised quantile residuals | mean 0.00, SD 1.00, Shapiro-Wilk p = 0.54 |
+
+The pivotal move is step 3. Instead of deleting a vendor to satisfy a VIF rule, replace
+the pair with **their average** and **their difference**. This is a rotation, not a
+different model — the log-likelihood is identical to the original parameterisation
+(-1760.253 either way) — but it puts the identified quantity and the unidentified one on
+separate, orthogonal axes, so the output says which is which instead of hiding it.
+The vendor average is a clear effect; the disagreement term is uninformative, exactly as
+it should be if the vendors differ only by measurement noise.
+
+Note that the dispersion is **estimated** in this notebook (alpha = 0.55, size 1.82)
+rather than set to the generating value of 1.6, as it must be in a real analysis. The
+fitted canopy, beer and district estimates in the table above therefore differ slightly
+from the known-alpha fits quoted earlier in this README.
 
 ## An analysis that passes
 
