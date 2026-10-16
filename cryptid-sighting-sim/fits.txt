@@ -1,0 +1,38 @@
+TRUE MODEL
+                           est     se      p
+Intercept               -1.255  0.095  0.000
+C(ranger_district)[T.2]  0.591  0.120  0.000
+C(ranger_district)[T.3] -0.405  0.127  0.001
+C(ranger_district)[T.4]  0.736  0.124  0.000
+C(ranger_district)[T.5] -0.079  0.124  0.523
+a_s                      0.134  0.163  0.411
+b_s                     -0.038  0.157  0.810
+beer                    -0.275  0.048  0.000
+I(beer ** 2)             0.230  0.031  0.000
+sum a+b: est 0.096 se 0.045 truth 0.035
+diff a-b: est 0.172 se 0.317 truth 0.625
+
+Poisson chi2/df 10.1 ; SE ratio a_s 0.258
+
+NO OFFSET, linear beer, numeric district
+                    est       p
+Intercept        2.8547  0.0000
+a_s             -0.0409  0.7955
+b_s              0.3570  0.0187
+beer            -0.3961  0.0000
+ranger_district  0.0268  0.3090
+
+OFFSET OK, linear beer, numeric district
+                    est       p
+Intercept       -0.6968  0.0000
+a_s              0.1337  0.4054
+b_s              0.0187  0.9037
+beer            -0.4145  0.0000
+ranger_district -0.0149  0.5808
+
+VENDOR B DROPPED: a_s est 0.0961 p 0.0335
+
+VIF {'canopy_vendor_a': np.float64(19.7), 'canopy_vendor_b': np.float64(19.3), 'beer_sales_z': np.float64(1.5), 'ranger_district': np.float64(1.0)}
+corr A/B 0.974  A/beer 0.573  B/logE 0.218
+district LR test: dev diff 124.0 on 4 df
+beer minimum at z = 0.67
